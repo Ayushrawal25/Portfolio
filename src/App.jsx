@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/HomePage.jsx
+import React from 'react';
+import './App.css'; // Import the CSS file
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="homepage">
+      <nav className="navbar">
+        <div className="logo">A</div>
+        <ul className="nav-links">
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact us</li>
+          <li>Team</li>
+        </ul>
+      </nav>
+      <div className="content">
+        <div className="intro">
+          <h1>Hello, <br /> I'm Aqsam</h1>
+          <p>UI/UX Designer, Flutter developer</p>
+          <div className="buttons">
+            <button className="hire-me">Hire me</button>
+            <button className="download-cv">Download CV</button>
+          </div>
+        </div>
+        <div className="profile-pic">
+          <img src="profile-pic.png" alt="Profile" />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="social-icons">
+        <div className="icon">IG</div>
+        <div className="icon">FB</div>
+        <div className="icon">TW</div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;
