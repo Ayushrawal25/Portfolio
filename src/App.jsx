@@ -16,8 +16,8 @@ const App = () => {
       </nav>
       <div className="content">
         <div className="intro">
-          <h1>Hello, <br /> I'm Aqsam</h1>
-          <p>UI/UX Designer, Flutter developer</p>
+          <h1>Hello, <br /> I'm Ayush</h1>
+          <p>Full Stack Developer, Android Developer</p>
           <div className="buttons">
             <button className="hire-me">Hire me</button>
             <button className="download-cv">Download CV</button>
