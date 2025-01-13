@@ -3,32 +3,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Root styles */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424; /* Default background color */
+  background-color: #242424;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
-  height: 100%; /* Ensure full height */
+html,
+body {
+  height: 100%;
   margin: 0;
   display: flex;
-  flex-direction: column; /* Allow for proper flex layout */
+  flex-direction: column;
 }
 
 body {
-  background-color: #052049; /* Set the background color */
+  background-color: #0a031f;
 }
 
 #root {
-  flex: 1; /* Allow the root to take full height */
+  flex: 1;
 }
 
 h1 {
@@ -57,7 +59,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -68,5 +69,121 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* Media query for screens smaller than the 'lg' breakpoint (1024px) */
+@media (max-width: 768px) {
+  /* Center align the main content */
+  main#home {
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* Adjust section layout */
+  main section#home {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Full width images */
+  main section#home img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  /* Adjust text alignment */
+  main section#home div {
+    text-align: center;
+  }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade-out animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Pop-up animation */
+@keyframes popUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Classes for animations */
+.fade-in {
+  animation: fadeIn 3s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 3s forwards;
+}
+
+.pop-up {
+  opacity: 0;
+  animation: popUp 2s forwards;
+}
+
+/* Adding delays to pop-up elements */
+.pop-up.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.pop-up.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.pop-up.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.pop-up.delay-4 {
+  animation-delay: 0.8s;
+}
+
+.pop-up.delay-5 {
+  animation-delay: 1s;
+}
+
+.pop-up.delay-6 {
+  animation-delay: 1.2s;
+}
+/* Optional: Add this to index.css if you want to add any animations or additional styles */
+.gradient-line {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: left center;
+  }
+  50% {
+    background-position: right center;
+  }
+  100% {
+    background-position: left center;
   }
 }
