@@ -83,8 +83,8 @@ const Section = ({ id, children }) => {
 
 const SeparatorLine = () => {
   return (
-    <div className="w-[95%] md:w-[85%] lg:w-[75%] max-w-[800px] h-[2px] mx-auto my-8">
-      <div className="h-full bg-gradient-to-r from-[#ff2e63] via-[#8e44ad] to-[#4834d4]"></div>
+    <div className="w-[95%] md:w-[85%] lg:w-[90%] max-w-[875px] h-[2px] mx-auto my-8">
+      <div className="h-full bg-gradient-to-r from-[#275a7c] via-[#7497b6] to-[#5990a6]"></div>
     </div>
   );
 };
@@ -112,10 +112,10 @@ const App = () => {
   }
 
   return (
-    <div className="flex bg-[#02071f] min-h-screen">
+    <div className="flex bg-[#436f8d] min-h-screen">
       {/* Sidebar */}
       <div
-        className={`w-72 bg-[#1c325b00] text-[#faf8f9] h-screen flex flex-col items-center p-5 fixed left-0 top-0 transform ${
+        className={`w-72 bg-[#05243a] text-[#faf8f9] h-screen flex flex-col items-center p-5 fixed left-0 top-0 transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform lg:translate-x-0 z-50`}
       >
@@ -130,7 +130,7 @@ const App = () => {
           <h2 className="text-3xl font-serif text-[#ffffff] pop-up delay-1">
             Ayush Rawal
           </h2>
-          <p className="text-xl text-[#ff9fb2] pop-up delay-2">
+          <p className="text-xl text-[#7497b6] pop-up delay-2">
             <Typewriter
               texts={["Web Developer", "Creative Coder", "Tech Enthusiast"]}
             />
@@ -158,16 +158,16 @@ const App = () => {
             About
           </a>
           <a
-            href="#resume"
-            className="text-white py-3 border-b border-white hover:text-red-400 transition-colors"
-          >
-            Resume
-          </a>
-          <a
-            href="#Skills"
+            href="#skills"
             className="text-white py-3 border-b border-white hover:text-red-400 transition-colors"
           >
             Skills
+          </a>
+          <a
+            href="#projects"
+            className="text-white py-3 border-b border-white hover:text-red-400 transition-colors"
+          >
+            Projects
           </a>
           <a
             href="#contact"
@@ -191,7 +191,7 @@ const App = () => {
 
       {/* Hamburger Button */}
       <button
-        className="lg:hidden fixed top-5 right-5 z-50 bg-[#041219] text-white py-2.5 px-3 shadow-lg"
+        className="lg:hidden fixed top-5 right-5 z-50 bg-[#04121900] text-white py-2.5 px-3 shadow-lg"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         {isMenuOpen ? "✖" : "☰"}
@@ -200,7 +200,7 @@ const App = () => {
       {/* Main Content */}
       <main
         className={`
-          ml-0 lg:ml-72 p-5 flex-grow bg-[#052049] transition-all duration-300
+          ml-0 lg:ml-72 p-5 flex-grow bg-[#1e3e54] transition-all duration-300
           ${isMenuOpen ? "blur-[2px] scale-[0.98]" : "blur-0 scale-100"}
           lg:blur-0 lg:scale-100
         `}
@@ -212,7 +212,7 @@ const App = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 pop-up delay-3">
                 Ayush Rawal
               </h1>
-              <h2 className="text-lg md:text-xl text-[#ff9db2] mb-4 pop-up delay-2">
+              <h2 className="text-lg md:text-xl text-[#5990a6] mb-4 pop-up delay-2">
                 Web Developer
               </h2>
               <p className="text-sm md:text-lg text-white mb-6 pop-up delay-3">
@@ -253,9 +253,9 @@ const App = () => {
           <div className="flex flex-col md:flex-row gap-8">
             <div className="md:w-3/5">
               <p className="text-lg text-white mb-4 pop-up delay-2">
-                Hello! My name is Ayush and I am a Computer Engineer. I am
-                currently pursuing a postgraduate degree in Software
-                Engineering, furthering my knowledge and skills in the field...
+                Hello! My name is Ayush and I am a Software Engineer. I am
+                currently pursuing a undergraduate degree in Information
+                Technology, furthering my knowledge and skills in the field...
               </p>
               <div className="flex flex-wrap gap-2 text-white mb-4 pop-up delay-3">
                 {[
@@ -272,9 +272,10 @@ const App = () => {
                   "GitHub",
                   "TypeScript",
                 ].map((tech, index) => (
-                  <span key={index} className="bg-gray-700 px-2 py-1 rounded">
-                    {tech}
-                  </span>
+                  <div key={index} className="flex items-center text-[#ffffff]">
+                    <span className="mr-2">➤</span>
+                    <span>{tech}</span>
+                  </div>
                 ))}
               </div>
               <p className="text-lg text-white mb-4 pop-up delay-4">
@@ -286,11 +287,11 @@ const App = () => {
                 CV
               </button>
             </div>
-            <div className="md:w-2/5 flex items-center justify-center pop-up delay-3">
+            <div className="md:w-2/5 flex items-start justify-center pop-up delay-3 relative">
               <img
-                src="./file1.png"
+                src="./file.png"
                 alt="Profile"
-                className="w-full h-auto rounded-lg shadow-lg"
+                className="w-[400px] mt-12  transform -translate-y-16 rounded-lg animate-glow" // Fixed width and upward translation
               />
             </div>
           </div>
