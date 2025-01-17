@@ -1,9 +1,9 @@
 // App.jsx
-// App.jsx
 import React, { useState, useEffect } from "react";
 import Lottie from "react-lottie-player";
 import "./index.css";
-import DeveloperAnimation from "./DeveloperAnimation.json";
+import EducationAnimation from "./EducationAnimation.json";
+import DeveloperAnimation from "./DeveloperAnimation1.json";
 import LoadingAnimation from "./LoadingAnimation.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faCamera } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +12,8 @@ import {
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 
 const Typewriter = ({ texts, typingSpeed = 150, pauseTime = 2000 }) => {
@@ -87,7 +89,7 @@ const Section = ({ id, children, className = "" }) => {
 const SeparatorLine = () => {
   return (
     <div className="w-[95%] md:w-[85%] lg:w-[90%] max-w-[875px] h-[2px] mx-auto my-8">
-      <div className="h-full bg-gradient-to-r from-[#001829] via-[#0a2942] to-[#001829]"></div>
+      <div className="h-full bg-gradient-to-r from-[#060b20] via-[#dc6c3c] to-[#060b20]"></div>
     </div>
   );
 };
@@ -115,43 +117,45 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#001829]">
+    <div className="min-h-screen bg-[#060b20]">
       {/* Top Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 bg-[#001829] h-16 flex items-center justify-between px-6 z-50">
+      <nav className="fixed top-0 left-0 right-0 bg-[#05091d] h-16 flex items-center justify-between px-6 z-50">
         {/* Logo Section */}
         <div className="flex items-center">
-          <span className="text-[#7497b6] text-xl font-mono">{"<AR/>"}</span>
+          <span className="text-[#a9632d] text-3xl ml-4 font-mono">
+            {"<AR/>"}
+          </span>
         </div>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center mr-9 space-x-8">
           <a
             href="#home"
-            className="text-white hover:text-[#7497b6] transition-colors"
+            className="text-white text-xl hover:text-[#7497b6] transition-colors"
           >
             Home
           </a>
           <a
             href="#about"
-            className="text-white hover:text-[#7497b6] transition-colors"
+            className="text-white text-xl hover:text-[#7497b6] transition-colors"
           >
             About
           </a>
           <a
             href="#skills"
-            className="text-white hover:text-[#7497b6] transition-colors"
+            className="text-white text-xl hover:text-[#7497b6] transition-colors"
           >
             Skills & Experience
           </a>
           <a
             href="#projects"
-            className="text-white hover:text-[#7497b6] transition-colors"
+            className="text-white text-xl hover:text-[#7497b6] transition-colors"
           >
             Projects
           </a>
           <a
             href="#contact"
-            className="text-white hover:text-[#7497b6] transition-colors"
+            className="text-white text-xl hover:text-[#7497b6] transition-colors"
           >
             Contact
           </a>
@@ -159,7 +163,7 @@ const App = () => {
 
         {/* Menu Button for Mobile */}
         <button
-          className="lg:hidden fixed top-4 right-4 z-50 bg-[#001829] rounded-lg p-2"
+          className="lg:hidden fixed top-4 right-4 z-50 bg-[#c2872900] rounded-lg p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <svg
@@ -188,7 +192,7 @@ const App = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-4 right-4 bg-[#001829] transition-transform duration-300 lg:hidden rounded-lg shadow-lg ${
+          className={`fixed top-4 right-4 bg-[#eb9c2e00] transition-transform duration-300 lg:hidden rounded-lg shadow-lg ${
             isMenuOpen
               ? "transform translate-x-0"
               : "transform translate-x-full"
@@ -237,18 +241,18 @@ const App = () => {
       {/* Main Content */}
       <main className="pt-16 px-5 pb-5">
         {/* Home Section */}
-        <Section id="home" className="h-screen overflow-hidden">
-          {" "}
-          {/* Added overflow-hidden */}
-          <div className="max-w-6xl mx-auto px-4 h-full flex items-center">
-            <div className="flex flex-col md:flex-row items-center justify-between w-full">
-              {" "}
+        <Section id="home" className="min-h-screen">
+          <div className="max-w-6xl mx-auto px-4 min-h-screen flex items-center">
+            <div className="flex flex-col md:flex-row items-center justify-between w-full gap-8">
               {/* Left Side - Text Content */}
               <div className="md:w-1/2 text-left space-y-6">
-                <h1 className="text-6xl md:text-6xl font-bold text-white pop-up delay-1">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white pop-up delay-1">
+                  Hi there! I am
+                </h1>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white pop-up delay-1 gradient-text">
                   Ayush Rawal
                 </h1>
-                <h2 className="text-xl md:text-3xl text-[#7497b6] pop-up delay-2">
+                <h2 className="text-xl md:text-3xl text-[#a9632d] pop-up delay-2">
                   Web Developer
                 </h2>
                 <p className="text-base md:text-xl text-white max-w-xl pop-up delay-3">
@@ -258,31 +262,79 @@ const App = () => {
                   experiences.
                 </p>
                 <div className="flex gap-4 pop-up delay-4">
-                  <button className="view-work-btn bg-[#868EBB] text-white py-2 px-6 rounded-md hover:bg-[#7497b6] transition-all duration-300">
+                  <button
+                    onClick={() =>
+                      document
+                        .getElementById("projects")
+                        .scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="view-work-btn bg-[#05091e] text-white py-2 px-6 rounded-md hover:bg-[#283b4b] transition-all duration-300"
+                  >
                     View Work
                   </button>
-                  <button className="contact-btn bg-transparent text-white py-2 px-6 rounded-md border border-[#7497b6] hover:bg-[#7497b6]/10 transition-all duration-300">
+                  <a
+                    href="https://linkedin.com/in/ayushrawal2507"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-btn bg-transparent text-white py-2 px-6 rounded-md border border-[#7497b6] hover:bg-[#7497b6]/10 transition-all duration-300"
+                  >
                     Contact Me
-                  </button>
+                  </a>
                 </div>
               </div>
+
               {/* Right Side - Illustration */}
               <div className="md:w-1/2 flex justify-center items-center">
-                <Lottie
-                  loop
-                  play
-                  animationData={DeveloperAnimation}
-                  style={{
-                    width: "100%",
-                    maxWidth: 500,
-                    margin: 0, // Added this
-                    display: "block", // Added this
-                  }}
-                />
+                <div className="relative flex md:flex-row flex-col items-center gap-8">
+                  <Lottie
+                    loop
+                    play
+                    animationData={DeveloperAnimation}
+                    style={{
+                      width: "100%",
+                      maxWidth: 500,
+                      margin: 0,
+                      display: "block",
+                    }}
+                  />
+
+                  <div className="social-links md:absolute md:right-[-4rem] md:top-1/2 md:transform md:-translate-y-1/2 flex md:flex-col flex-row items-center md:gap-6 gap-4 mt-4 md:mt-0">
+                    <a
+                      href="https://github.com/yourusername"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-icon-link"
+                    >
+                      <FaGithub className="text-2xl text-[#dba3f3] hover:text-[#c77ef0] transition-all duration-300" />
+                    </a>
+                    <a
+                      href="https://linkedin.com/in/yourusername"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-icon-link"
+                    >
+                      <FaLinkedin className="text-2xl text-[#dba3f3] hover:text-[#c77ef0] transition-all duration-300" />
+                    </a>
+                    <a
+                      href="https://leetcode.com/yourusername"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-icon-link"
+                    >
+                      <SiLeetcode className="text-2xl text-[#dba3f3] hover:text-[#c77ef0] transition-all duration-300" />
+                    </a>
+                    <a
+                      href="mailto:your.email@example.com"
+                      className="social-icon-link"
+                    >
+                      <FaEnvelope className="text-2xl text-[#dba3f3] hover:text-[#c77ef0] transition-all duration-300" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </Section>
+        </Section>{" "}
         <SeparatorLine />
         {/* About Section */}
         {/* About Section */}
@@ -320,12 +372,14 @@ const App = () => {
                   </p>
                 </div>
 
-                <div className="mt-8 pop-up delay-5">
-                  <button className="bg-[#7497b6] text-white py-3 px-6 rounded-md hover:bg-[#5990a6] transition-colors flex items-center">
-                    <FontAwesomeIcon icon={faCamera} className="mr-2" />
-                    Download CV
-                  </button>
-                </div>
+                <a
+                  href="https://drive.google.com/uc?export=download&id=1kIHolM2up9PgN8TZ2FEr5NlWYKAMQ8YX"
+                  className="bg-[#d98a3c] text-white py-3 px-6 rounded-md hover:bg-[#0f0f38] transition-colors mt-7 flex items-center"
+                  style={{ display: "inline-block", textDecoration: "none" }}
+                >
+                  <FontAwesomeIcon icon={faCamera} className="mr-2" />
+                  Download CV
+                </a>
               </div>
               <div className="md:w-2/5 flex justify-center pop-up delay-3">
                 <img
@@ -353,17 +407,19 @@ const App = () => {
               <div className="pop-up delay-2 space-y-16">
                 {/* Programming Languages Section */}
                 <div className="relative">
-                  {/* Dot overlapping the line */}
-                  <div className="absolute left-0 top-0 w-4 h-4 bg-[#001829] z-10">
-                    <div className="w-3 h-3 bg-[#7497b6] rounded-full"></div>
-                  </div>
-                  {/* Continuous line */}
-                  <div className="absolute left-1.5 top-0 bottom-0 w-[1px] bg-[#7497b6] opacity-20"></div>
+                  {/* Line starts from dot position */}
+                  <div className="absolute left-1.5 top-0 bottom-0 w-[1px] bg-[#dc6c3c] opacity-20"></div>
 
-                  <div className="pl-8">
-                    <h3 className="text-[#7497b6] text-lg mb-8">
+                  <div className="flex items-center mb-8">
+                    <div className="relative w-4 h-4 bg-[#00182900] z-10 mt-1">
+                      <div className="w-3 h-3 bg-[#dc6c3c] rounded-full"></div>
+                    </div>
+                    <h3 className="text-[#dc6c3c] text-lg ml-4">
                       Programming Languages
                     </h3>
+                  </div>
+
+                  <div className="pl-8">
                     <div className="grid grid-cols-3 gap-8">
                       {[
                         { name: "C++", icon: "devicon-cplusplus-plain" },
@@ -394,15 +450,19 @@ const App = () => {
 
                 {/* Frameworks/Libraries Section */}
                 <div className="relative">
-                  <div className="absolute left-0 top-0 w-4 h-4 bg-[#001829] z-10">
-                    <div className="w-3 h-3 bg-[#7497b6] rounded-full"></div>
-                  </div>
-                  <div className="absolute left-1.5 top-0 bottom-0 w-[1px] bg-[#7497b6] opacity-20"></div>
+                  {/* Line starts from dot position */}
+                  <div className="absolute left-1.5 top-0 bottom-0 w-[1px] bg-[#dc6c3c] opacity-20"></div>
 
-                  <div className="pl-8">
-                    <h3 className="text-[#7497b6] text-lg mb-8">
+                  <div className="flex items-center mb-8">
+                    <div className="relative w-4 h-4 bg-[#00182900] z-10 mt-1">
+                      <div className="w-3 h-3 bg-[#dc6c3c] rounded-full"></div>
+                    </div>
+                    <h3 className="text-[#dc6c3c] text-lg ml-4">
                       Frameworks/Libraries
                     </h3>
+                  </div>
+
+                  <div className="pl-8">
                     <div className="grid grid-cols-3 gap-8">
                       {[
                         { name: "ReactJS", icon: "devicon-react-original" },
@@ -427,13 +487,17 @@ const App = () => {
 
                 {/* Tools Section */}
                 <div className="relative">
-                  <div className="absolute left-0 top-0 w-4 h-4 bg-[#001829] z-10">
-                    <div className="w-3 h-3 bg-[#7497b6] rounded-full"></div>
+                  {/* Line starts from dot position */}
+                  <div className="absolute left-1.5 top-0 bottom-0 w-[1px] bg-[#dc6c3c] opacity-20"></div>
+
+                  <div className="flex items-center mb-8">
+                    <div className="relative w-4 h-4 bg-[#00182900] z-10 mt-1">
+                      <div className="w-3 h-3 bg-[#dc6c3c] rounded-full"></div>
+                    </div>
+                    <h3 className="text-[#dc6c3c] text-lg ml-4">Tools</h3>
                   </div>
-                  <div className="absolute left-1.5 top-0 bottom-0 w-[1px] bg-[#7497b6] opacity-20"></div>
 
                   <div className="pl-8">
-                    <h3 className="text-[#7497b6] text-lg mb-8">Tools</h3>
                     <div className="grid grid-cols-3 gap-8">
                       {[
                         { name: "MySQL", icon: "devicon-mysql-plain" },
@@ -459,7 +523,7 @@ const App = () => {
                 </div>
               </div>
 
-              {/* Right Column - Education */}
+              {/* Right Column - Experience */}
               <div className="pop-up delay-3 space-y-16">
                 {[
                   {
@@ -470,35 +534,36 @@ const App = () => {
                       "Organized various events and helped my team to prepare quizzes for some events.",
                   },
                   {
-                    title: "Web Development Training, Internshala",
+                    title: "Web Development Training",
+                    role: "Internshala",
                     period: "2022 - 2023",
                     description:
                       "Persued a course in Web Development from Internshala to advance in the field of software development",
                   },
-                  // {
-                  //   title: "Secondary (10th)",
-                  //   period: "2018 - 2019",
-                  //   description:
-                  //     "Completed my secondary education with excellent academic performance.",
-                  // },
-                ].map((edu, index) => (
+                ].map((exp, index) => (
                   <div key={index} className="relative">
-                    <div className="absolute left-0 top-0 w-4 h-4 bg-[#001829] z-10">
-                      <div className="w-3 h-3 bg-[#7497b6] rounded-full"></div>
-                    </div>
-                    <div className="absolute left-1.5 top-0 bottom-0 w-[1px] bg-[#7497b6] opacity-20"></div>
+                    {/* Line starts from dot position */}
+                    <div className="absolute left-1.5 top-0 bottom-0 w-[1px] bg-[#dc6c3c] opacity-20"></div>
 
-                    <div className="pl-8">
-                      <h4 className="text-2xl font-bold text-white mb-1">
-                        {edu.title}
-                      </h4>
-                      <p className="text-[#7497b6] text-lg mb-0">{edu.role}</p>
-                      <p className="text-[#7497b6] text-lg mb-3">
-                        {edu.period}
-                      </p>
-                      <p className="text-gray-300 text-lg leading-relaxed">
-                        {edu.description}
-                      </p>
+                    <div className="flex items-start">
+                      <div className="relative w-4 h-4 bg-[#00182900] z-10 mt-2">
+                        <div className="w-3 h-3 bg-[#dc6c3c] rounded-full"></div>
+                      </div>
+
+                      <div className="ml-4">
+                        <h4 className="text-2xl font-bold text-white mb-1">
+                          {exp.title}
+                        </h4>
+                        <p className="text-[#dc6c3c] text-lg mb-0">
+                          {exp.role}
+                        </p>
+                        <p className="text-[#dc6c3c] text-lg mb-3">
+                          {exp.period}
+                        </p>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                          {exp.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -518,10 +583,16 @@ const App = () => {
                 <div className="relative">
                   {/* Main Laptop Illustration */}
                   <div className="w-full max-w-[600px]">
-                    <img
-                      src="/laptop-illustration.svg"
-                      alt="Education Illustration"
-                      className="w-full h-auto"
+                    <Lottie
+                      loop
+                      play
+                      animationData={EducationAnimation}
+                      style={{
+                        width: "100%",
+                        maxWidth: 500,
+                        margin: 0, // Added this
+                        display: "block", // Added this
+                      }}
                     />
                   </div>
 
@@ -665,21 +736,21 @@ const App = () => {
                   <div className="flex items-center text-white">
                     <FontAwesomeIcon
                       icon={faEnvelope}
-                      className="mr-4 text-[#7497b6]"
+                      className="mr-4 text-[#dc6c3c]"
                     />
                     <span>email@example.com</span>
                   </div>
                   <div className="flex items-center text-white">
                     <FontAwesomeIcon
                       icon={faGithub}
-                      className="mr-4 text-[#7497b6]"
+                      className="mr-4 text-[#dc6c3c]"
                     />
                     <span>github.com/username</span>
                   </div>
                   <div className="flex items-center text-white">
                     <FontAwesomeIcon
                       icon={faLinkedin}
-                      className="mr-4 text-[#7497b6]"
+                      className="mr-4 text-[#dc6c3c]"
                     />
                     <span>linkedin.com/in/username</span>
                   </div>
@@ -690,21 +761,21 @@ const App = () => {
                   <input
                     type="text"
                     placeholder="Name"
-                    className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#7497b6] focus:outline-none focus:border-[#5990a6]"
+                    className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#dc6c3c] focus:outline-none focus:border-[#a9632d]"
                   />
                   <input
                     type="email"
                     placeholder="Email"
-                    className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#7497b6] focus:outline-none focus:border-[#5990a6]"
+                    className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#dc6c3c] focus:outline-none focus:border-[#a9632d]"
                   />
                   <textarea
                     placeholder="Message"
                     rows="4"
-                    className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#7497b6] focus:outline-none focus:border-[#5990a6]"
+                    className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#dc6c3c] focus:outline-none focus:border-[#a9632d]"
                   ></textarea>
                   <button
                     type="submit"
-                    className="w-full bg-[#7497b6] text-white py-3 rounded-md hover:bg-[#5990a6] transition-colors"
+                    className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#dc6c3c] focus:outline-none focus:border-[#a9632d]"
                   >
                     Send Message
                   </button>
