@@ -12,9 +12,46 @@ import {
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+import { AiFillGithub } from "react-icons/ai";
+import { BsLink45Deg } from "react-icons/bs";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
+import project1image from "./assets/PgLife.jpg";
+import project2image from "./assets/FRAS.png";
+
+//projects component
+const projects = [
+  {
+    id: 1,
+    image: project1image,
+    title: "Project Title 1",
+    description: "Brief description of the project and the technologies used.",
+    // projectLink: "https://example.com/project1",
+    githubLink: "https://github.com/username/project1",
+    techStack: [
+      "devicon-html5-plain-wordmark colored",
+      "devicon-php-plain colored",
+      "devicon-css3-plain colored",
+      "devicon-javascript-plain colored",
+    ],
+  },
+  {
+    id: 2,
+    image: project2image,
+    title: "Face Recognition Attendance System",
+    description: "Brief description of the project and the technologies used.",
+    // projectLink: "https://example.com/project2",
+    githubLink: "https://github.com/username/project2",
+    techStack: [
+      "devicon-python-plain",
+      "devicon-firebase-line-wordmark colored",
+      "devicon-opencv-plain-wordmark colored",
+      "devicon-numpy-plain colored",
+    ],
+  },
+  // Add more projects as needed
+];
 
 const Typewriter = ({ texts, typingSpeed = 150, pauseTime = 2000 }) => {
   const [displayedText, setDisplayedText] = useState("");
@@ -42,7 +79,6 @@ const Typewriter = ({ texts, typingSpeed = 150, pauseTime = 2000 }) => {
         }
       }
     };
-
     const typingInterval = setInterval(
       handleTyping,
       isDeleting ? typingSpeed / 2 : typingSpeed
@@ -79,7 +115,7 @@ const Section = ({ id, children, className = "" }) => {
       ref={ref}
       className={`transition-opacity duration-1000 ${
         inView ? "fade-in" : "fade-out"
-      } ${className} ${id !== "home" ? "pt-24" : ""}`} // Added conditional padding-top
+      } ${className} ${id !== "home" ? "pt-24" : ""}`}
     >
       {children}
     </section>
@@ -122,11 +158,13 @@ const App = () => {
       <nav className="fixed top-0 left-0 right-0 bg-[#05091d] h-16 flex items-center justify-between px-6 z-50">
         {/* Logo Section */}
         <div className="flex items-center">
-          <span className="text-[#a9632d] text-3xl ml-4 font-mono">
+          <a
+            href="#home"
+            className="text-[#ea8d46] text-xl ml-4 font-mono hover:text-[#9e5e2e] transition-colors"
+          >
             {"<AR/>"}
-          </span>
+          </a>
         </div>
-
         {/* Desktop Navigation Links */}
         <div className="hidden lg:flex items-center mr-9 space-x-8">
           <a
@@ -268,7 +306,7 @@ const App = () => {
                         .getElementById("projects")
                         .scrollIntoView({ behavior: "smooth" })
                     }
-                    className="view-work-btn bg-[#05091e] text-white py-2 px-6 rounded-md hover:bg-[#283b4b] transition-all duration-300"
+                    className="view-work-btn bg-[#05091e] text-white py-2 px-6 rounded-md hover:bg-[#314b61] transition-all duration-300"
                   >
                     View Work
                   </button>
@@ -300,20 +338,20 @@ const App = () => {
 
                   <div className="social-links md:absolute md:right-[-4rem] md:top-1/2 md:transform md:-translate-y-1/2 flex md:flex-col flex-row items-center md:gap-6 gap-4 mt-4 md:mt-0">
                     <a
-                      href="https://github.com/yourusername"
+                      href="https://github.com/Ayushrawal25"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="social-icon-link"
                     >
-                      <FaGithub className="text-2xl text-[#dba3f3] hover:text-[#c77ef0] transition-all duration-300" />
+                      <FaGithub className="text-2xl text-[#dc6c3c] hover:text-[#a9632d] transition-all duration-300" />
                     </a>
                     <a
-                      href="https://linkedin.com/in/yourusername"
+                      href="https://linkedin.com/in/ayushrawal2507"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="social-icon-link"
                     >
-                      <FaLinkedin className="text-2xl text-[#dba3f3] hover:text-[#c77ef0] transition-all duration-300" />
+                      <FaLinkedin className="text-2xl text-[#dc6c3c] hover:text-[#a9632d] transition-all duration-300" />
                     </a>
                     <a
                       href="https://leetcode.com/yourusername"
@@ -321,13 +359,13 @@ const App = () => {
                       rel="noopener noreferrer"
                       className="social-icon-link"
                     >
-                      <SiLeetcode className="text-2xl text-[#dba3f3] hover:text-[#c77ef0] transition-all duration-300" />
+                      <SiLeetcode className="text-2xl text-[#dc6c3c] hover:text-[#a9632d] transition-all duration-300" />
                     </a>
                     <a
-                      href="mailto:your.email@example.com"
+                      href="mailto:ayushrawal25@gmail.com"
                       className="social-icon-link"
                     >
-                      <FaEnvelope className="text-2xl text-[#dba3f3] hover:text-[#c77ef0] transition-all duration-300" />
+                      <FaEnvelope className="text-2xl text-[#dc6c3c] hover:text-[#a9632d] transition-all duration-300" />
                     </a>
                   </div>
                 </div>
@@ -336,7 +374,6 @@ const App = () => {
           </div>
         </Section>{" "}
         <SeparatorLine />
-        {/* About Section */}
         {/* About Section */}
         <Section id="about">
           <div className="max-w-6xl mx-auto px-4">
@@ -540,6 +577,13 @@ const App = () => {
                     description:
                       "Persued a course in Web Development from Internshala to advance in the field of software development",
                   },
+                  {
+                    title: "iNeuron Tech-A-Thon 2.0",
+                    role: "Participant",
+                    period: "2022",
+                    description:
+                      "Developed a blogging website that allows users to create their profile and publish their blogs.",
+                  },
                 ].map((exp, index) => (
                   <div key={index} className="relative">
                     {/* Line starts from dot position */}
@@ -598,22 +642,22 @@ const App = () => {
 
                   {/* Floating Elements */}
                   {/* <div className="absolute inset-0">
-                    <div className="absolute top-10 left-10 text-[#7497b6] animate-float-1">
-                      ♦
-                    </div>
-                    <div className="absolute top-20 right-20 text-[#FFD700] animate-float-2">
-                      ♥
-                    </div>
-                    <div className="absolute bottom-20 left-20 text-[#7497b6] animate-float-3">
-                      ▼
-                    </div>
-                    <div className="absolute top-1/2 right-10 text-[#7497b6] animate-float-4">
-                      •
-                    </div>
-                    <div className="absolute bottom-10 right-1/2 text-[#7497b6] animate-float-5">
-                      🔊
-                    </div>
-                  </div> */}
+                <div className="absolute top-10 left-10 text-[#7497b6] animate-float-1">
+                  ♦
+                </div>
+                <div className="absolute top-20 right-20 text-[#FFD700] animate-float-2">
+                  ♥
+                </div>
+                <div className="absolute bottom-20 left-20 text-[#7497b6] animate-float-3">
+                  ▼
+                </div>
+                <div className="absolute top-1/2 right-10 text-[#7497b6] animate-float-4">
+                  •
+                </div>
+                <div className="absolute bottom-10 right-1/2 text-[#7497b6] animate-float-5">
+                  🔊
+                </div>
+              </div> */}
                 </div>
               </div>
 
@@ -646,22 +690,47 @@ const App = () => {
                 </div>
 
                 {/* Education Card 2 */}
+                {/* Education Card 2 */}
                 <div className="education-card bg-[#1a1a2e00] rounded-xl p-6 hover:bg-[#1a1a2e]/80 transition-all duration-300">
                   <div className="flex items-start gap-4">
                     <img
-                      src="/polkadot-logo.png"
-                      alt="Polkadot Logo"
-                      className="w-12 h-12 rounded-lg"
+                      src="/cchs.png"
+                      alt="College Logo"
+                      className="w-20 h-20 rounded-lg"
                     />
                     <div>
                       <h3 className="text-[#7497b6] text-xl font-semibold mb-1">
-                        Matrix Computers
+                        Cambridge Court High School,Jaipur
                       </h3>
-                      <p className="text-gray-400 mb-3">May 2024 - June 2024</p>
+                      <h4 className="text-white mb-2">
+                        Senior Secondary Education(XII)
+                      </h4>
+                      <p className="text-gray-400 mb-3">2020 - 2021</p>
                       <p className="text-gray-300">
-                        • Completed a course in Data Structures and Algorithms
-                        using C++. • Gained problem-solving skills and applied
-                        coding logics to solve problems.
+                        •Higher Secondary Education in PCM.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Education Card 3 */}
+                <div className="education-card bg-[#1a1a2e00] rounded-xl p-6 hover:bg-[#1a1a2e]/80 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <img
+                      src="/cchs.png"
+                      alt="College Logo"
+                      className="w-20 h-20 rounded-lg"
+                    />
+                    <div>
+                      <h3 className="text-[#7497b6] text-xl font-semibold mb-1">
+                        Cambridge Court High School,Jaipur
+                      </h3>
+                      <h4 className="text-white mb-2">
+                        Secondary Education(X)
+                      </h4>
+                      <p className="text-gray-400 mb-3">2018 - 2019</p>
+                      <p className="text-gray-300">
+                        •Completed Secondary Education with focus on Academic
+                        Excellence.
                       </p>
                     </div>
                   </div>
@@ -671,53 +740,63 @@ const App = () => {
           </div>
         </Section>
         <SeparatorLine />
-        {/* Projects Section */}
         <Section id="projects">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-white pop-up delay-1">
               Projects<span className="text-[#7497b6]">.</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Project Cards */}
-              {[1, 2, 3].map((project, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {projects.map((project) => (
                 <div
-                  key={index}
-                  className="bg-[#0a2942] rounded-lg overflow-hidden shadow-lg pop-up delay-2"
+                  key={project.id}
+                  className="bg-[#1a1a2e00] rounded-xl p-6 hover:bg-[#1a1a2e]/80 transition-all duration-300"
                 >
-                  <img
-                    src={`./project${project}.jpg`}
-                    alt={`Project ${project}`}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">
-                      Project Title {project}
-                    </h3>
-                    <p className="text-gray-300 mb-4">
-                      Brief description of the project and the technologies
-                      used.
-                    </p>
-                    <div className="flex gap-2">
-                      <a
-                        href="#"
-                        className="text-[#7497b6] hover:text-white transition-colors"
-                      >
-                        View Project
-                      </a>
-                      <span className="text-[#7497b6]">|</span>
-                      <a
-                        href="#"
-                        className="text-[#7497b6] hover:text-white transition-colors"
-                      >
-                        GitHub
-                      </a>
+                  <div className="flex items-start gap-4">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-16 h-16 rounded-full"
+                    />
+                    <div>
+                      <h3 className="text-[#7497b6] text-xl font-semibold mb-1">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-300 mb-2">Tech Stack</p>
+                      <div className="flex space-x-2 mt-2">
+                        {project.techStack.map((icon, index) => (
+                          <i key={index} className={`${icon} text-white`}></i>
+                        ))}
+                      </div>
                     </div>
+                  </div>
+                  <p className="text-gray-300 mb-4">{project.description}</p>
+                  <div className="flex justify-start items-center">
+                    {/* {project.projectLink && (
+                      <a
+                        href={project.projectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#7497b6] hover:text-[#dc6c3c] transition-colors mr-2"
+                      >
+                        <BsLink45Deg size="1.5rem" />
+                      </a>
+                    )} */}
+                    {project.githubLink && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#7497b6] hover:text-[#dc6c3c] transition-colors"
+                      >
+                        <AiFillGithub size="1.5rem" />
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </Section>
+        </Section>{" "}
         <SeparatorLine />
         {/* Contact Section */}
         <Section id="contact">

@@ -12,7 +12,8 @@
 }
 
 /* ====== Base Styles ====== */
-html, body {
+html,
+body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -33,28 +34,59 @@ section {
 
 /* ====== Animation Keyframes ====== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes popUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ====== Animation Classes ====== */
-.fade-in { animation: fadeIn 1s ease forwards; }
-.pop-up { 
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.pop-up {
   opacity: 0;
-  animation: popUp 0.8s ease forwards; 
+  animation: popUp 0.8s ease forwards;
 }
 
 /* Animation Delays */
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
-.delay-5 { animation-delay: 0.5s; }
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+.delay-4 {
+  animation-delay: 0.4s;
+}
+
+.delay-5 {
+  animation-delay: 0.5s;
+}
 
 /* ====== Button Styles ====== */
 .view-work-btn {
@@ -73,8 +105,8 @@ section {
   border-radius: 6px;
   padding: 2px;
   background: linear-gradient(45deg, #db7208, #d47e0d, #fa7b13);
-  -webkit-mask: 
-    linear-gradient(#db8606 0 0) content-box, 
+  -webkit-mask:
+    linear-gradient(#db8606 0 0) content-box,
     linear-gradient(#db8606 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -98,8 +130,8 @@ section {
   border-radius: 6px;
   padding: 2px;
   background: linear-gradient(45deg, #db7208, #d47e0d, #fa7b13);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -108,22 +140,35 @@ section {
 }
 
 /* Button Hover Effects */
-.view-work-btn:hover::before { opacity: 1; }
-.view-work-btn:hover { box-shadow: 0 0 30px rgba(228, 136, 7, 0.64); }
-.contact-btn:hover { box-shadow: 0 0 30px rgba(228, 136, 7, 0.64); }
-.contact-btn:hover::before { opacity: 1; }
+.view-work-btn:hover::before {
+  opacity: 1;
+}
 
-.view-work-btn, .contact-btn {
+.view-work-btn:hover {
+  box-shadow: 0 0 30px rgba(228, 136, 7, 0.64);
+}
+
+.contact-btn:hover {
+  box-shadow: 0 0 30px rgba(228, 136, 7, 0.64);
+}
+
+.contact-btn:hover::before {
+  opacity: 1;
+}
+
+.view-work-btn,
+.contact-btn {
   transition: all 0.3s ease;
   transform: translateY(0);
 }
 
-.view-work-btn:hover, .contact-btn:hover {
+.view-work-btn:hover,
+.contact-btn:hover {
   transform: translateY(-2px);
 }
 
-/* ====== Component Styles ====== */
-/* Navigation */
+/* ====== Component Styles ====== /
+/ Navigation */
 .nav-link {
   position: relative;
   transition: color 0.3s ease;
@@ -139,7 +184,8 @@ section {
 .aspect-square {
   width: 100%;
   position: relative;
-  padding-bottom: 100%; /* Creates a square aspect ratio */
+  padding-bottom: 100%;
+  /* Creates a square aspect ratio */
 }
 
 /* Education Cards */
@@ -220,13 +266,15 @@ section {
     max-width: 400px;
     margin: 0 auto;
   }
-  
-  .view-work-btn, .contact-btn {
+
+  .view-work-btn,
+  .contact-btn {
     font-size: 0.9rem;
     padding: 0.5rem 1.25rem;
   }
-  
-  .view-work-btn::before, .contact-btn::before {
+
+  .view-work-btn::before,
+  .contact-btn::before {
     padding: 1.5px;
   }
 
@@ -238,7 +286,7 @@ section {
   .education-card {
     padding: 1rem;
   }
-  
+
   .education-card img {
     width: 2.5rem;
     height: 2.5rem;
@@ -249,12 +297,12 @@ section {
   section {
     padding: 1.5rem 0;
   }
-  
+
   .text-4xl {
     font-size: 2rem;
   }
-  
-  .space-y-6 > * {
+
+  .space-y-6>* {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -281,103 +329,105 @@ section {
 @media (max-width: 480px) {
   .illustration-container {
     max-width: 300px;
-    padding-bottom: 85%; /* Slightly taller on mobile */
-  }
+    padding-bottom: 85%;
+
+    /* Slightly taller on mobile */
+}
 }
 /* Floating Icons Styles */
-.floating-icon {
-  position: absolute;
-  padding: 0.75rem;
-  background: rgba(6, 11, 32, 0.8);
-  border: 1px solid rgba(220, 108, 60, 0.2);
-  border-radius: 50%;
-  backdrop-filter: blur(4px);
-  transition: all 0.3s ease;
-}
+    .floating-icon {
+      position: absolute;
+      padding: 0.75rem;
+      background: rgba(6, 11, 32, 0.8);
+      border: 1px solid rgba(220, 108, 60, 0.2);
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
 
-.floating-icon:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(220, 108, 60, 0.3);
-}
+    .floating-icon:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(220, 108, 60, 0.3);
+    }
 
-/* Desktop Positions */
-@media (min-width: 768px) {
-  .code-icon {
-    top: 10%;
-    right: 5%;
-    animation: float 3s ease-in-out infinite;
-  }
+    /* Desktop Positions */
+    @media (min-width: 768px) {
+      .code-icon {
+        top: 10%;
+        right: 5%;
+        animation: float 3s ease-in-out infinite;
+      }
 
-  .gear-icon {
-    top: 30%;
-    right: -5%;
-    animation: float 4s ease-in-out infinite;
-  }
+      .gear-icon {
+        top: 30%;
+        right: -5%;
+        animation: float 4s ease-in-out infinite;
+      }
 
-  .browser-icon {
-    bottom: 30%;
-    right: 0;
-    animation: float 3.5s ease-in-out infinite;
-  }
+      .browser-icon {
+        bottom: 30%;
+        right: 0;
+        animation: float 3.5s ease-in-out infinite;
+      }
 
-  .terminal-icon {
-    bottom: 10%;
-    right: 10%;
-    animation: float 4.5s ease-in-out infinite;
-  }
-}
+      .terminal-icon {
+        bottom: 10%;
+        right: 10%;
+        animation: float 4.5s ease-in-out infinite;
+      }
+    }
 
-/* Mobile Positions */
-@media (max-width: 767px) {
-  .floating-icon {
-    transform: scale(0.8);
-  }
+    /* Mobile Positions */
+    @media (max-width: 767px) {
+      .floating-icon {
+        transform: scale(0.8);
+      }
 
-  .code-icon {
-    top: 0;
-    right: 10%;
-    animation: floatMobile 3s ease-in-out infinite;
-  }
+      .code-icon {
+        top: 0;
+        right: 10%;
+        animation: floatMobile 3s ease-in-out infinite;
+      }
 
-  .gear-icon {
-    top: 20%;
-    right: 0;
-    animation: floatMobile 4s ease-in-out infinite;
-  }
+      .gear-icon {
+        top: 20%;
+        right: 0;
+        animation: floatMobile 4s ease-in-out infinite;
+      }
 
-  .browser-icon {
-    bottom: 20%;
-    right: 5%;
-    animation: floatMobile 3.5s ease-in-out infinite;
-  }
+      .browser-icon {
+        bottom: 20%;
+        right: 5%;
+        animation: floatMobile 3.5s ease-in-out infinite;
+      }
 
-  .terminal-icon {
-    bottom: 5%;
-    right: 15%;
-    animation: floatMobile 4.5s ease-in-out infinite;
-  }
-}
+      .terminal-icon {
+        bottom: 5%;
+        right: 15%;
+        animation: floatMobile 4.5s ease-in-out infinite;
+      }
+    }
 
-/* Social Icons Styles */
-.social-icons-container {
-  position: relative;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  background: rgba(6, 11, 32, 0.3);
-  backdrop-filter: blur(4px);
-}
+    /* Social Icons Styles */
+    .social-icons-container {
+      position: relative;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      background: rgba(6, 11, 32, 0.3);
+      backdrop-filter: blur(4px);
+    }
 
-.social-icon {
-  transition: transform 0.3s ease;
-}
+    .social-icon {
+      transition: transform 0.3s ease;
+    }
 
-.social-icon:hover {
-  transform: translateY(-2px);
-}
+    .social-icon:hover {
+      transform: translateY(-2px);
+    }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .social-icons-container {
-    margin-top: 1rem;
-  }
-}
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .social-icons-container {
+        margin-top: 1rem;
+      }
+    }
