@@ -1,5 +1,6 @@
 // App.jsx
 import React, { useState, useEffect } from "react";
+import emailjs from "emailjs-com";
 import Lottie from "react-lottie-player";
 import "./index.css";
 import EducationAnimation from "./EducationAnimation.json";
@@ -19,6 +20,8 @@ import { SiLeetcode } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 import project1image from "./assets/PgLife.jpg";
 import project2image from "./assets/FRAS.png";
+
+//contact form component
 
 //projects component
 const projects = [
@@ -102,7 +105,6 @@ const Typewriter = ({ texts, typingSpeed = 150, pauseTime = 2000 }) => {
   );
 };
 
-// In your Section component, modify it to:
 const Section = ({ id, children, className = "" }) => {
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -115,7 +117,7 @@ const Section = ({ id, children, className = "" }) => {
       ref={ref}
       className={`transition-opacity duration-1000 ${
         inView ? "fade-in" : "fade-out"
-      } ${className} ${id !== "home" ? "pt-24" : ""}`}
+      } ${className} ${id !== "home" ? "pt-20" : ""}`}
     >
       {children}
     </section>
@@ -131,6 +133,41 @@ const SeparatorLine = () => {
 };
 
 const App = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_ua6fp2q", // Replace with your EmailJS service ID
+        "template_3sysnkd", // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          message: formData.message,
+        },
+        "67Yleh30jb3DzKAZD" // Replace with your EmailJS user ID
+      )
+      .then((response) => {
+        console.log("Email sent successfully!", response);
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+      });
+  };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -141,12 +178,12 @@ const App = () => {
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-[#001829] backdrop-blur-3xl text-white z-50">
+      <div className="fixed inset-0 flex items-center justify-center bg-[#060b20] backdrop-blur-3xl text-white z-50">
         <Lottie
           loop
           play
           animationData={LoadingAnimation}
-          style={{ width: 500, height: 500 }}
+          style={{ width: 300, height: 300 }}
         />
       </div>
     );
@@ -279,7 +316,7 @@ const App = () => {
       {/* Main Content */}
       <main className="pt-16 px-5 pb-5">
         {/* Home Section */}
-        <Section id="home" className="min-h-screen">
+        <Section id="home" className="min-h-screen pt-5 pb-8">
           <div className="max-w-6xl mx-auto px-4 min-h-screen flex items-center">
             <div className="flex flex-col md:flex-row items-center justify-between w-full gap-8">
               {/* Left Side - Text Content */}
@@ -420,9 +457,9 @@ const App = () => {
               </div>
               <div className="md:w-2/5 flex justify-center pop-up delay-3">
                 <img
-                  src="./file1.png"
+                  src="./Home_page.png"
                   alt="Profile"
-                  className="w-full h-auto max-w-md object-contain" // Adjusted image sizing
+                  className="w-full h-full max-w-lg object-contain" // Adjusted image sizing
                   style={{
                     minHeight: "400px", // Minimum height
                     objectFit: "contain",
@@ -836,18 +873,27 @@ const App = () => {
                 </div>
               </div>
               <div className="pop-up delay-4">
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Name"
                     className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#dc6c3c] focus:outline-none focus:border-[#a9632d]"
                   />
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Email"
                     className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#dc6c3c] focus:outline-none focus:border-[#a9632d]"
                   />
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Message"
                     rows="4"
                     className="w-full p-3 rounded-md bg-[#0a2942] text-white border border-[#dc6c3c] focus:outline-none focus:border-[#a9632d]"

@@ -26,6 +26,7 @@ body {
 section {
   scroll-margin-top: 4rem;
   width: 100%;
+  padding: 4rem 0;
 }
 
 .min-h-screen {
