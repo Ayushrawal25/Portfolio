@@ -165,14 +165,14 @@ const App = () => {
 
     emailjs
       .send(
-        "service_ua6fp2q", // Replace with your EmailJS service ID
-        "template_3sysnkd", // Replace with your EmailJS template ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, // Using environment variable
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Using environment variable
         {
           from_name: formData.name,
           reply_to: formData.email,
           message: formData.message,
         },
-        "67Yleh30jb3DzKAZD" // Replace with your EmailJS user ID
+        import.meta.env.VITE_EMAILJS_USER_ID // Using environment variable
       )
       .then((response) => {
         console.log("Email sent successfully!", response);
