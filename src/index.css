@@ -27,10 +27,13 @@ section {
   scroll-margin-top: 4rem;
   width: 100%;
   padding: 4rem 0;
+  min-height: auto;
 }
 
-.min-h-screen {
-  min-height: 100vh;
+.h-screen {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 /* ====== Animation Keyframes ====== */
@@ -431,4 +434,17 @@ section {
       .social-icons-container {
         margin-top: 1rem;
       }
+    }
+
+
+    .backdrop-blur-xl {
+      backdrop-filter: blur(16px);
+    }
+    
+    .blur-sm {
+      filter: blur(4px);
+    }
+    
+    .blur-0 {
+      filter: blur(0);
     }

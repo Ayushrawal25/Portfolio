@@ -13,6 +13,8 @@ import {
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+import { TypeAnimation } from "react-type-animation";
+import { IoIosLink } from "react-icons/io";
 import { AiFillGithub } from "react-icons/ai";
 import { BsLink45Deg } from "react-icons/bs";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
@@ -21,15 +23,13 @@ import { useInView } from "react-intersection-observer";
 import project1image from "./assets/PgLife.jpg";
 import project2image from "./assets/FRAS.png";
 
-//contact form component
-
 //projects component
 const projects = [
   {
     id: 1,
     image: project1image,
-    title: "Project Title 1",
-    description: "Brief description of the project and the technologies used.",
+    title: "PGLife",
+    //description: "Brief description of the project and the technologies used.",
     // projectLink: "https://example.com/project1",
     githubLink: "https://github.com/username/project1",
     techStack: [
@@ -43,7 +43,7 @@ const projects = [
     id: 2,
     image: project2image,
     title: "Face Recognition Attendance System",
-    description: "Brief description of the project and the technologies used.",
+    //description: "Brief description of the project and the technologies used.",
     // projectLink: "https://example.com/project2",
     githubLink: "https://github.com/username/project2",
     techStack: [
@@ -126,13 +126,27 @@ const Section = ({ id, children, className = "" }) => {
 
 const SeparatorLine = () => {
   return (
-    <div className="w-[95%] md:w-[85%] lg:w-[90%] max-w-[875px] h-[2px] mx-auto my-8">
-      <div className="h-full bg-gradient-to-r from-[#060b20] via-[#dc6c3c] to-[#060b20]"></div>
+    <div className="w-[95%] md:w-[97%] lg:w-[95%] max-w-[1100px] h-[2px] mx-auto my-8">
+      <div className="h-full bg-gradient-to-r from-[#201506] via-[#dc6c3c] to-[#060b20]"></div>
     </div>
   );
 };
 
 const App = () => {
+  const [showIntro, setShowIntro] = useState(true);
+
+  useEffect(() => {
+    // Listen for scroll to remove intro effect
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setShowIntro(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -190,7 +204,25 @@ const App = () => {
   }
 
   return (
+    // <>
+    //   {showIntro && (
+    //     <div className="fixed inset-0 flex items-center justify-center z-50 bg-[#05091d]/80 backdrop-blur-xl transition-all duration-700">
+    //       <div className="text-center transform transition-all duration-700">
+    //         <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+    //           Hi there! I am
+    //         </h1>
+    //         <h1 className="text-5xl md:text-7xl font-bold gradient-text mb-4">
+    //           Ayush Rawal
+    //         </h1>
+    //       </div>
+    //     </div>
+    //   )}
     <div className="min-h-screen bg-[#060b20]">
+      {/* <div
+          className={`min-h-screen bg-[#05091d] transition-all duration-700 ${
+            showIntro ? "blur-sm" : "blur-0"
+          }`}
+        > */}
       {/* Top Navigation Bar */}
       <nav className="fixed top-0 left-0 right-0 bg-[#05091d] h-16 flex items-center justify-between px-6 z-50">
         {/* Logo Section */}
@@ -314,21 +346,38 @@ const App = () => {
       </nav>
 
       {/* Main Content */}
-      <main className="pt-16 px-5 pb-5">
+      <main className="pt-10 px-5 pb-5">
         {/* Home Section */}
-        <Section id="home" className="min-h-screen pt-5 pb-8">
-          <div className="max-w-6xl mx-auto px-4 min-h-screen flex items-center">
-            <div className="flex flex-col md:flex-row items-center justify-between w-full gap-8">
+        <Section
+          id="home"
+          className="flex items-center justify-between px-4 md:px-8 min-h-screen md:h-auto pt-20 md:pt-10"
+        >
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="flex flex-col md:flex-row items-center justify-between w-full gap-8 py-10 md:py-0">
               {/* Left Side - Text Content */}
-              <div className="md:w-1/2 text-left space-y-6">
+              <div className="md:w-1/2 text-left space-y-6 mt-16 md:mt-0">
+                {" "}
+                {/* Added margin-top for mobile */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white pop-up delay-1">
                   Hi there! I am
                 </h1>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white pop-up delay-1 gradient-text">
                   Ayush Rawal
                 </h1>
-                <h2 className="text-xl md:text-3xl text-[#a9632d] pop-up delay-2">
-                  Web Developer
+                <h2 className="text-2xl md:text-3xl text-[#a9632d] pop-up delay-2">
+                  <TypeAnimation
+                    sequence={[
+                      "Web Developer",
+                      1000,
+                      "Creative Coder",
+                      1000,
+                      "Tech Enthusiast",
+                      1000,
+                    ]}
+                    wrapper="span"
+                    speed={50}
+                    repeat={Infinity}
+                  />
                 </h2>
                 <p className="text-base md:text-xl text-white max-w-xl pop-up delay-3">
                   I am a passionate web developer with experience in creating
@@ -412,10 +461,10 @@ const App = () => {
         </Section>{" "}
         <SeparatorLine />
         {/* About Section */}
-        <Section id="about">
+        <Section id="about" className="pt-8 pb-8">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-white pop-up delay-1">
-              {"<about/>"}
+            <h2 className="text-3xl ml-5 font-bold mb-8 text-white pop-up delay-1">
+              About
             </h2>
             <div className="flex flex-col md:flex-row gap-12 items-center">
               {" "}
@@ -449,7 +498,10 @@ const App = () => {
                 <a
                   href="https://drive.google.com/uc?export=download&id=1kIHolM2up9PgN8TZ2FEr5NlWYKAMQ8YX"
                   className="bg-[#d98a3c] text-white py-3 px-6 rounded-md hover:bg-[#0f0f38] transition-colors mt-7 flex items-center"
-                  style={{ display: "inline-block", textDecoration: "none" }}
+                  style={{
+                    display: "inline-block",
+                    textDecoration: "none",
+                  }}
                 >
                   <FontAwesomeIcon icon={faCamera} className="mr-2" />
                   Download CV
@@ -471,7 +523,7 @@ const App = () => {
         </Section>
         <SeparatorLine />
         {/* Skills & Education Section */}
-        <Section id="skills">
+        <Section id="skills" className="pt-8 pb-8">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-white pop-up delay-1">
               Skills & Experience<span className="text-[#7497b6]">.</span>
@@ -540,8 +592,14 @@ const App = () => {
                     <div className="grid grid-cols-3 gap-8">
                       {[
                         { name: "ReactJS", icon: "devicon-react-original" },
-                        { name: "Bootstrap", icon: "devicon-bootstrap-plain" },
-                        { name: "Tailwind", icon: "devicon-tailwindcss-plain" },
+                        {
+                          name: "Bootstrap",
+                          icon: "devicon-bootstrap-plain",
+                        },
+                        {
+                          name: "Tailwind",
+                          icon: "devicon-tailwindcss-plain",
+                        },
                       ].map((framework, index) => (
                         <div
                           key={index}
@@ -653,7 +711,7 @@ const App = () => {
           </div>
         </Section>
         <SeparatorLine />
-        <Section id="education">
+        <Section id="education" className="pt-8 pb-8">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-5xl font-bold mb-16 text-white pop-up delay-1">
               Education
@@ -704,9 +762,9 @@ const App = () => {
                 <div className="education-card bg-[#1a1a2e00] rounded-xl p-6 hover:bg-[#1a1a2e]/80 transition-all duration-300">
                   <div className="flex items-start gap-4">
                     <img
-                      src="/college-logo.png"
+                      src="/CollegeLogo.png"
                       alt="College Logo"
-                      className="w-12 h-12 rounded-lg"
+                      className="w-20 h-12 rounded-lg"
                     />
                     <div>
                       <h3 className="text-[#7497b6] text-xl font-semibold mb-1">
@@ -777,55 +835,44 @@ const App = () => {
           </div>
         </Section>
         <SeparatorLine />
-        <Section id="projects">
+        {/* Projects Section */}
+        <Section id="projects" className="pt-8 pb-8">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-white pop-up delay-1">
-              Projects<span className="text-[#7497b6]">.</span>
+              Projects
+              {/* /*<span className="text-[#7497b6]">.</span>*/}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project) => (
                 <div
                   key={project.id}
-                  className="bg-[#1a1a2e00] rounded-xl p-6 hover:bg-[#1a1a2e]/80 transition-all duration-300"
+                  className="relative group overflow-hidden rounded-xl"
                 >
-                  <div className="flex items-start gap-4">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <div>
-                      <h3 className="text-[#7497b6] text-xl font-semibold mb-1">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-300 mb-2">Tech Stack</p>
-                      <div className="flex space-x-2 mt-2">
-                        {project.techStack.map((icon, index) => (
-                          <i key={index} className={`${icon} text-white`}></i>
-                        ))}
-                      </div>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-[250px] object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#001829] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {project.title}
+                    </h3>
+                    <div className="flex gap-2 mb-3">
+                      {project.techStack.map((tech, index) => (
+                        <i
+                          key={index}
+                          className={`${tech} text-2xl text-white`}
+                        />
+                      ))}
                     </div>
-                  </div>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
-                  <div className="flex justify-start items-center">
-                    {/* {project.projectLink && (
-                      <a
-                        href={project.projectLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#7497b6] hover:text-[#dc6c3c] transition-colors mr-2"
-                      >
-                        <BsLink45Deg size="1.5rem" />
-                      </a>
-                    )} */}
                     {project.githubLink && (
                       <a
                         href={project.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#7497b6] hover:text-[#dc6c3c] transition-colors"
+                        className="text-white hover:text-[#7497b6] transition-colors"
                       >
-                        <AiFillGithub size="1.5rem" />
+                        <IoIosLink size="1.5rem" />
                       </a>
                     )}
                   </div>
@@ -833,13 +880,14 @@ const App = () => {
               ))}
             </div>
           </div>
-        </Section>{" "}
+        </Section>
         <SeparatorLine />
         {/* Contact Section */}
-        <Section id="contact">
+        <Section id="contact" className="pt-8 pb-8">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-white pop-up delay-1">
-              Contact<span className="text-[#7497b6]">.</span>
+              Contact
+              {/* <span className="text-[#7497b6]">.</span> */}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-6">
@@ -854,21 +902,21 @@ const App = () => {
                       icon={faEnvelope}
                       className="mr-4 text-[#dc6c3c]"
                     />
-                    <span>email@example.com</span>
+                    <span>ayushrawal25@gamil.com</span>
                   </div>
                   <div className="flex items-center text-white">
                     <FontAwesomeIcon
                       icon={faGithub}
                       className="mr-4 text-[#dc6c3c]"
                     />
-                    <span>github.com/username</span>
+                    <span>Ayushrawal25</span>
                   </div>
                   <div className="flex items-center text-white">
                     <FontAwesomeIcon
                       icon={faLinkedin}
                       className="mr-4 text-[#dc6c3c]"
                     />
-                    <span>linkedin.com/in/username</span>
+                    <span>ayushrawal2507</span>
                   </div>
                 </div>
               </div>
@@ -910,7 +958,13 @@ const App = () => {
           </div>
         </Section>
       </main>
+      {/* Footer */}
+      <div className="text-center py-4 text-gray-400 text-sm border-t border-[#7497b6]/20">
+        © 2025 Ayush Rawal. All Rights Reserved.
+      </div>
     </div>
+    // </div>
+    // </>
   );
 };
 
