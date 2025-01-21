@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useState, useEffect } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import Lottie from "react-lottie-player";
 import "./index.css";
 import EducationAnimation from "./EducationAnimation.json";
