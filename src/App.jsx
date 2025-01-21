@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useState, useEffect } from "react";
-import emailjs from "@emailjs/browser";
+import * as emailjs from "@emailjs/browser";
 import Lottie from "react-lottie-player";
 import "./index.css";
 import EducationAnimation from "./EducationAnimation.json";
@@ -133,6 +133,9 @@ const SeparatorLine = () => {
 };
 
 const App = () => {
+  useEffect(() => {
+    emailjs.init(import.meta.env.VITE_EMAILJS_USER_ID);
+  }, []);
   const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
@@ -163,23 +166,25 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const templateParams = {
+      from_name: formData.name,
+      reply_to: formData.email,
+      message: formData.message,
+    };
+
     emailjs
       .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID, // Using environment variable
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Using environment variable
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          message: formData.message,
-        },
-        import.meta.env.VITE_EMAILJS_USER_ID // Using environment variable
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_USER_ID
       )
       .then((response) => {
-        console.log("Email sent successfully!", response);
+        console.log("SUCCESS!", response.status, response.text);
         setFormData({ name: "", email: "", message: "" });
       })
-      .catch((error) => {
-        console.error("Error sending email:", error);
+      .catch((err) => {
+        console.log("FAILED...", err);
       });
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
